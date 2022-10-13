@@ -19,11 +19,7 @@ namespace PryLogin.Controllers
             _context = context;
         }
 
-        void Registrar(Object sender,EventArgs e)
-        {
-            RedirectToAction("Create", "Usuarios");
-        }
-
+       
         // GET: Usuarios
         public async Task<IActionResult> Index()
         {
