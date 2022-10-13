@@ -34,5 +34,13 @@ namespace PryLogin.Controllers
                 return View();
             }
         }
+
+        [Route ("logout")]
+
+        public IActionResult Logout()
+        {
+            return RedirectToAction("Index", "Acceso");
+        }
+
     }
 }
