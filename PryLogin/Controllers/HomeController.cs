@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PryLogin.Models;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PryLogin.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

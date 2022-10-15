@@ -1,11 +1,24 @@
 using Microsoft.EntityFrameworkCore;
 using PryLogin.Models;
 using System.Configuration;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(option =>
+    {
+        option.LoginPath = "/Acceso/Index";   //Formalario de Logeo
+        option.ExpireTimeSpan = TimeSpan.FromMinutes(5);  //Tiempo de espera 
+        option.AccessDeniedPath = "/Acceso/Index";  //Acceso Denegado
+    });
+    
+
 
 builder.Services.AddDbContext<WebContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("conexion")));
@@ -24,6 +37,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();   //Para que se realice la autenticacion
 
 app.UseAuthorization();
 

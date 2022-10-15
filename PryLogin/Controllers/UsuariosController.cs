@@ -7,11 +7,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PryLogin.Models;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PryLogin.Controllers
 {
+    [Authorize]
     public class UsuariosController : Controller
     {
+
+        
         private readonly WebContext _context;
 
         public UsuariosController(WebContext context)
